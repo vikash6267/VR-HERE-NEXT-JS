@@ -4,6 +4,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { TbToolsKitchen3 } from "react-icons/tb";
 import SevenDayMeal from "./SevenDayMeal"; // Ensure the correct import path
 import Link from "next/link";
+import Image from "next/image";
 
 const TifinCard = ({ tifin, view, }) => {
   const formatMealType = (type) => {
@@ -32,7 +33,7 @@ const TifinCard = ({ tifin, view, }) => {
         }`}
       >
         <div className="h-[200px]  mx-auto md:mx-0 shadow-lg  shadow-yellow-600">
-          <img
+          <Image
             src={tifin?.images?.[0]?.url}
             alt={`Image of ${tifin?.name}`}
             className="object-cover h-full w-full rounded hover:scale-95"

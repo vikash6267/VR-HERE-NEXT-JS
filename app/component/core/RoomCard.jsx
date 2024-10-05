@@ -5,6 +5,7 @@ import { FcBusinessman, FcBusinesswoman } from "react-icons/fc";
 import { BiMaleFemale } from "react-icons/bi";
 import { TbToolsKitchen3 } from "react-icons/tb";
 import Link from "next/link";
+import Image from "next/image";
 
 const RoomCard = ({ room, view }) => {
   const getGenderIcon = () => {
@@ -43,7 +44,7 @@ const RoomCard = ({ room, view }) => {
       }`}
     >
       <div className="h-[200px]  mx-auto md:mx-0 shadow-lg shadow-yellow-600  ">
-        <img
+        <Image
           src={room?.images?.[0]?.url}
           alt={`Image of ${room?.pgName}`}
           className="object-cover h-full w-full rounded hover:scale-95"

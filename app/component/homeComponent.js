@@ -7,6 +7,7 @@ import Loading from "./common/Loading";
 import TimeLine from "./core/Timeline";
 import Last from "./core/Last";
 import Link from "next/link"; // Use next/link for client-side navigation
+import Image from "next/image";
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
@@ -78,7 +79,7 @@ const Home = () => {
                         >
                           {currElem?.images?.map((image, idx) => (
                             <div key={idx} className="relative ">
-                              <img
+                              <Image
                                 src={image?.url}
                                 alt="not found"
                                 className="w-20 h-20 md:w-48 md:h-48 rounded-full shadow-yellow-500 shadow-xl"
@@ -118,7 +119,7 @@ const Home = () => {
                         >
                           {currElem?.images?.map((image, idx) => (
                             <div key={idx} className="relative">
-                              <img
+                              <Image
                                 src={image?.url}
                                 alt="not found"
                                 className="w-20 h-20 md:w-48 md:h-48 rounded-full shadow-yellow-500 shadow-xl"

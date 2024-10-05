@@ -122,7 +122,7 @@ function MobileSidebar({ isOpen, setIsOpen }) {
                 variants={hardcodedVariants}
               >
                 <div className="flex justify-center">
-                  <img
+                  <Image
                     src={user?.image}
                     alt="User"
                     width={50}

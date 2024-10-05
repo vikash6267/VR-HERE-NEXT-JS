@@ -50,18 +50,24 @@ import { MdEmail } from "react-icons/md";
           <div className="grid lg:grid-cols-2 items-center gap-5">
             <div>
               <div className="first flex flex-col gap-8">
-                <div className="flex items-center gap-4">
-                  <span className="px-4 py-3 bg-yellow-600 rounded-md text-xl">
-                    <MdEmail />
-                  </span>
-                  <span>vrhere.in@gmail.com</span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <span className="px-4 py-3 bg-yellow-600 rounded-md text-xl">
-                    <FaPhone />
-                  </span>
-                  <span>+91 6267144122 || 9009594537</span>
-                </div>
+              <div className="flex items-center gap-4">
+  <span className="px-4 py-3 bg-yellow-600 rounded-md text-xl">
+    <MdEmail />
+  </span>
+  <span>
+    <a href="mailto:vrhere.in@gmail.com">vrhere.in@gmail.com</a>
+  </span>
+</div>
+<div className="flex items-center gap-4">
+  <span className="px-4 py-3 bg-yellow-600 rounded-md text-xl">
+    <FaPhone />
+  </span>
+  <span>
+    <a href="tel:+916267144122">+91 6267144122</a> || 
+    <a href="tel:+919009594537">9009594537</a>
+  </span>
+</div>
+
 
                 <div className="flex gap-3">
                   <a

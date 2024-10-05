@@ -52,7 +52,7 @@ const paramss = useParams()
     if (id) {
       findLocation();
     }
-  }, [id]);
+  }, [id,paramss,findLocation]);
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
