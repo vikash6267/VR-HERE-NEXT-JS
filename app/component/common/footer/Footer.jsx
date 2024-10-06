@@ -11,13 +11,13 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 
-const Footer = () => {
+const Footer = () => {Image
   return (
     <footer className="bg-black text-white py-8">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center md:items-start mb-8">
           <div className="mb-6 md:mb-0">
-            <Image src={logo} alt="Logo" className="w-40 h-auto mb-4 md:mb-0" />
+            <Image  width={500}         src={logo} alt="Logo" className="w-40 h-auto mb-4 md:mb-0" />
             <div className="flex space-x-4">
               {/* <Link
                 href="#"

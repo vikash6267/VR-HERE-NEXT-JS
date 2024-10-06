@@ -67,55 +67,60 @@ const SingleRoom = () => {
     setLoginModal(true);
   };
 
-  const fetchSingleRoom = async () => {
-    try {
-      setLoading(true);
-      const response = await singleRoom(slug);
+ 
 
-      setRoom(response);
-      // console.log(response.ratingAndReviews      );
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching single room:", error);
-      setLoading(false);
-    }
-  };
 
-  const fetchAerageRating = async () => {
-    try {
-      const response = await roomAverageRating({ roomId: room?._id }, token);
-      // console.log(response);
-      setAverage(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const fetchRatingStaus = async () => {
-    try {
-      const response = await checkRating({ roomId: room?._id }, token);
-      console.log(response);
-      setAlreadyRating(response);
-      setUserData(response?.alreadyReviewed);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   useEffect(() => {
+    const fetchSingleRoom = async () => {
+      try {
+        setLoading(true);
+        const response = await singleRoom(slug);
+  
+        setRoom(response);
+        // console.log(response.ratingAndReviews      );
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching single room:", error);
+        setLoading(false);
+      }
+    };
+
+
     if (slug) {
       fetchSingleRoom();
     }
     // console.log(slug);
-  }, [slug,fetchSingleRoom,]);
+  }, [slug]);
 
   useEffect(() => {
+
+    const fetchAerageRating = async () => {
+      try {
+        const response = await roomAverageRating({ roomId: room?._id }, token);
+        // console.log(response);
+        setAverage(response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    const fetchRatingStaus = async () => {
+      try {
+        const response = await checkRating({ roomId: room?._id }, token);
+        console.log(response);
+        setAlreadyRating(response);
+        setUserData(response?.alreadyReviewed);
+      } catch (error) {
+        console.log(error);
+      }
+    };
     if (room) {
       fetchAerageRating();
       if (token) {
         fetchRatingStaus();
       }
     }
-  }, [room,fetchAerageRating,fetchRatingStaus]);
+  }, [room,token]);
 
 
 
@@ -508,7 +513,7 @@ const SingleRoom = () => {
 
             <div>
               <div className="p-5 bg-white shadow-md rounded-lg flex items-start space-x-4">
-                <Image
+                <Image   width={500} height={600}
                   src={user?.image}
                   alt={`${user?.name}'s avatar`}
                   className="w-16 h-16 rounded-full object-cover"

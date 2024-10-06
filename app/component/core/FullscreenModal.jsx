@@ -32,6 +32,8 @@ export default function FullscreenModal({
           {slides.map((slide, index) => (
             <SwiperSlide key={index}>
               <Image
+                                height={600}
+                                width={500} 
                 className="w-full h-full object-contain"
                 src={slide.url}
                 alt={`fullscreen-slide-${index}`}

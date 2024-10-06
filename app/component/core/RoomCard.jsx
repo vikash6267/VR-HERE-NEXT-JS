@@ -45,6 +45,8 @@ const RoomCard = ({ room, view }) => {
     >
       <div className="h-[200px]  mx-auto md:mx-0 shadow-lg shadow-yellow-600  ">
         <Image
+          width={500}
+          height={800}
           src={room?.images?.[0]?.url}
           alt={`Image of ${room?.pgName}`}
           className="object-cover h-full w-full rounded hover:scale-95"

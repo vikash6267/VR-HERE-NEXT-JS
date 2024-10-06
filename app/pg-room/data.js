@@ -26,33 +26,35 @@ const paramss = useParams()
   const [view, setView] = useState("grid");
   const [showFilterPopup, setShowFilterPopup] = useState(false);
 
-  const findAllRooms = async () => {
-    setLoading(true);
-    const response = await allRoom();
-    console.log(response);
-    setRooms(response || []); // Ensure default value if response is undefined
-    setLoading(false);
-  };
 
-  const findLocation = async () => {
-    setLoading(true);
-    const response = await singleLocation(id);
-    console.log(response?.name);
-    setLocation(response?.name || "");
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      location: response?.name || "",
-    }));
-    setLoading(false);
-  };
 
   useEffect(() => {
+
+    const findAllRooms = async () => {
+      setLoading(true);
+      const response = await allRoom();
+      console.log(response);
+      setRooms(response || []); // Ensure default value if response is undefined
+      setLoading(false);
+    };
+  
+    const findLocation = async () => {
+      setLoading(true);
+      const response = await singleLocation(id);
+      console.log(response?.name);
+      setLocation(response?.name || "");
+      setFilters((prevFilters) => ({
+        ...prevFilters,
+        location: response?.name || "",
+      }));
+      setLoading(false);
+    };
     findAllRooms();
-    console.log(paramss)
+
     if (id) {
       findLocation();
     }
-  }, [id,paramss,findLocation]);
+  }, [id,paramss]);
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;

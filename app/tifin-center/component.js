@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useCallback  } from "react";
 import NavbarContainer from "../component/common/Navbar/Navbar";
 import { allTifins } from "../service/operations/tifin";
 import { singleLocation } from "../service/operations/room";
@@ -23,33 +23,43 @@ const Tifin = () => {
   const [showFilterPopup, setShowFilterPopup] = useState(false);
 
   // Fetch all Tifins
-  const findAllTifins = async () => {
-    setLoading(true);
-    const response = await allTifins();
-    console.log(response);
-    setTifins(response || []);
-    setLoading(false);
-  };
-
-  // Fetch single location based on id
-  const findLocation = async () => {
-    if (id) {
+  const findAllTifins = useCallback(async () => {
+    try {
       setLoading(true);
-      const response = await singleLocation(id);
-      console.log(response?.name);
-      setLocation(response?.name || "");
-      setFilters((prevFilters) => ({
-        ...prevFilters,
-        location: response?.name || "",
-      }));
+      const response = await allTifins();
+      setTifins(response || []);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching Tifins:", error);
       setLoading(false);
     }
-  };
+  }, []); // No dependencies, it will only run when the component mounts
+
+  // Fetch single location based on id
+  const findLocation = useCallback(async () => {
+    if (id) {
+      try {
+        setLoading(true);
+        const response = await singleLocation(id);
+        const locationName = response?.name || "";
+        setLocation(locationName);
+        setFilters((prevFilters) => ({
+          ...prevFilters,
+          location: locationName,
+        }));
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching location:", error);
+        setLoading(false);
+      }
+    }
+  }, [id]); // Include id as a dependency since it affects the function
+
 
   useEffect(() => {
     findAllTifins();
-    findLocation(); // Call findLocation directly as it depends on id
-  }, [id]);
+    findLocation();
+  }, [findAllTifins, findLocation]);
 
   // Handle filter change
   const handleFilterChange = (e) => {
@@ -86,7 +96,7 @@ const Tifin = () => {
       <NavbarContainer />
       <div className="flex flex-col md:flex-row">
         {/* Filter Panel for Desktop */}
-        <div className="hidden md:block w-full md:w-1/4 p-4 border-r lg:min-h-[calc(100vh-100px)] bg-yellow-600 ">
+        <div className="hidden md:block w-full md:w-1/4 p-4 border-r lg:min-h-[calc(100vh-100px)] bg-yellow-600">
           <h2 className="text-xl font-bold mb-4">Filters</h2>
           {/* Location Filter */}
           <div className="mb-4">
@@ -232,22 +242,22 @@ const Tifin = () => {
           </div>
         )}
 
-        {/* Loading or Tifin Cards */}
-        {loading ? (
-          <Loading />
-        ) : (
-          <div className="w-full md:w-3/4 p-4">
-            <div className={`grid ${view === "grid" ? "grid-cols-2 gap-4" : "grid-cols-1 gap-2"}`}>
+        {/* Tifin Listings */}
+        <div className="w-full md:w-3/4 p-4">
+          {loading ? (
+            <Loading />
+          ) : (
+            <div className={`grid ${view === "grid" ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" : "grid-cols-1 gap-2"}`}>
               {filteredTifins.length > 0 ? (
                 filteredTifins.map((tifin) => (
-                  <TifinCard key={tifin.id} data={tifin} />
+                  <TifinCard key={tifin.id} tifin={tifin} />
                 ))
               ) : (
-                <p>No Tifins found.</p>
+                <p>No Tifins found based on your filters.</p>
               )}
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );

@@ -57,7 +57,7 @@ export default function CourseReviewModal({ setReviewModal, tifinId, roomId }) {
         {/* Modal Body */}
         <div className="p-6">
           <div className="flex items-center justify-center gap-x-4">
-            <Image
+            <Image   width={500} height={600}
               src={user?.image}
               alt={`${user?.firstName} profile`}
               className="aspect-square w-[50px] rounded-full border-2 border-gray-600 object-cover"

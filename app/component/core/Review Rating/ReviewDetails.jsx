@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import { useSelector } from "react-redux";
 
@@ -46,7 +46,7 @@ function ReviewDetails({ data, avrageRating }) {
                 key={index}
                 className="p-5 bg-white shadow-md rounded-lg flex items-start space-x-4"
               >
-                <Image
+                <Image   width={500} height={600}
                   src={review?.user?.image}
                   alt={`${review?.user?.name}'s avatar`}
                   className="w-16 h-16 rounded-full object-cover"

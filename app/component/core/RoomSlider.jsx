@@ -44,7 +44,8 @@ export default function ImageSlider({ images }) {
             }`}
             onClick={() => handleThumbnailClick(index)}
           >
-            <Image
+                               
+            <Image   width={500}   height={600}
               src={slide.url}
               alt="thumbnail"
               className="w-full h-16 mb-2 cursor-pointer object-cover"
@@ -76,7 +77,7 @@ export default function ImageSlider({ images }) {
         {images.map((slide, index) => (
           <SwiperSlide key={index}>
             <div className="w-full h-[200px] lg:min-h-screen ">
-              <Image
+              <Image   width={500}  height={600}
                 className="cursor-pointer object-cover"
                 src={slide.url}
                 alt={`slide-${index}`}

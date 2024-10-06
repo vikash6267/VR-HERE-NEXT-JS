@@ -1,10 +1,17 @@
 import Image from 'next/image';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 const ImageSlider = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoplay, setIsAutoplay] = useState(true);
   
+  // Wrap nextSlide with useCallback to avoid unnecessary redefinition
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  }, [images.length]);
+
   // Handle autoplay
   useEffect(() => {
     if (isAutoplay) {
@@ -13,17 +20,11 @@ const ImageSlider = ({ images }) => {
       }, 3000);
       return () => clearInterval(interval);
     }
-  }, [currentIndex, isAutoplay,nextSlide]);
+  }, [isAutoplay, nextSlide]);
 
   const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  };
-
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   };
 
@@ -39,7 +40,7 @@ const ImageSlider = ({ images }) => {
       >
         {images.map((image, index) => (
           <div key={index} className="w-full h-full flex-shrink-0">
-            <Image
+            <Image width={500} height={600}
               src={image.url}
               alt={`Slide ${index + 1}`}
               className="w-full h-full object-cover"

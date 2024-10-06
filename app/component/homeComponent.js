@@ -18,14 +18,15 @@ const Home = () => {
     setActiveTab(tabName);
   };
 
-  const fetchLocations = async () => {
-    setLoading(true);
-    const response = await allLocations();
-    setLocation(response || []);
-    setLoading(false);
-  };
+
 
   useEffect(() => {
+    const fetchLocations = async () => {
+      setLoading(true);
+      const response = await allLocations();
+      setLocation(response || []);
+      setLoading(false);
+    };
     fetchLocations();
   }, []);
 
@@ -78,8 +79,10 @@ const Home = () => {
                           className="relative group inline-block m-4 cursor-pointer"
                         >
                           {currElem?.images?.map((image, idx) => (
-                            <div key={idx} className="relative ">
+                            <div key={idx} className="relative">
                               <Image
+                                width={800}
+                                height={600} // Ensure height is defined
                                 src={image?.url}
                                 alt="not found"
                                 className="w-20 h-20 md:w-48 md:h-48 rounded-full shadow-yellow-500 shadow-xl"
@@ -120,6 +123,8 @@ const Home = () => {
                           {currElem?.images?.map((image, idx) => (
                             <div key={idx} className="relative">
                               <Image
+                                width={500}
+                                height={500} // Ensure height is defined
                                 src={image?.url}
                                 alt="not found"
                                 className="w-20 h-20 md:w-48 md:h-48 rounded-full shadow-yellow-500 shadow-xl"
@@ -159,3 +164,4 @@ const Home = () => {
 };
 
 export default Home;
+ 

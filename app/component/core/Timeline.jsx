@@ -43,7 +43,7 @@ const TimelineSection = () => {
               <div className="flex flex-col lg:gap-3" key={i}>
                 <div className="flex gap-6" key={i}>
                   <div className="w-[52px] h-[52px] bg-black rounded-full flex justify-center items-center shadow-[#00000012] shadow-[0_0_62px_0]">
-                    <Image src={ele.Logo} alt="" />
+                    <Image  src={ele.Logo} alt="" />
                   </div>
                   <div>
                     <h2 className="font-semibold text-[18px]">{ele.Heading}</h2>
@@ -79,7 +79,7 @@ const TimelineSection = () => {
             </div>
             <div></div>
           </div>
-          <Image
+          <Image   width={500} height={600}
             src={TimeLineImage}
             alt="timelineImage"
             className="shadow-black shadow-[20px_20px_0px_0px] object-cover h-[400px] lg:h-fit"

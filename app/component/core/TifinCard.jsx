@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import { HiCurrencyRupee } from "react-icons/hi2";
 import { FaLocationDot } from "react-icons/fa6";
@@ -7,6 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const TifinCard = ({ tifin, view, }) => {
+  
   const formatMealType = (type) => {
     switch (type) {
       case "veg":
@@ -34,7 +36,9 @@ const TifinCard = ({ tifin, view, }) => {
       >
         <div className="h-[200px]  mx-auto md:mx-0 shadow-lg  shadow-yellow-600">
           <Image
-            src={tifin?.images?.[0]?.url}
+           src={tifin?.images?.[0]?.url}
+           height={600}
+           width={850}
             alt={`Image of ${tifin?.name}`}
             className="object-cover h-full w-full rounded hover:scale-95"
           />

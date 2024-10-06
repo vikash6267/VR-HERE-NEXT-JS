@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,useCallback } from "react";
 import { FaDollarSign, FaPhone, FaMapPin } from "react-icons/fa";
 
 import { useSelector } from "react-redux";
@@ -40,38 +40,21 @@ function SingleTifin() {
     }
     setLoginModal(true);
   };
-  const fetchAerageRating = async () => {
-    try {
-      const response = await tifinAverageRating({ tifinId: tifin?._id }, token);
-      setAverage(response);
-      // console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
-  const fetchSingleTifin = async () => {
+
+  const fetchSingleTifin = useCallback(async () => {
     try {
       setLoading(true);
       const response = await singleTifin(slug);
       setTifin(response);
-      //   console.log(response);
       setLoading(false);
     } catch (error) {
       console.error("Error fetching single tifin:", error);
       setLoading(false);
     }
-  };
-  const fetchRatingStaus = async () => {
-    try {
-      const response = await checkRating({ tifinId: tifin?._id }, token);
-      // console.log(response);
-      setAlreadyRating(response);
-      setUserData(response?.alreadyReviewed);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  }, [slug]); // Include slug as dependency
+
+
   useEffect(() => {
     if (slug) {
       fetchSingleTifin();
@@ -80,13 +63,36 @@ function SingleTifin() {
   }, [slug,fetchSingleTifin]);
 
   useEffect(() => {
+
+
+    const fetchAerageRating = async () => {
+      try {
+        const response = await tifinAverageRating({ tifinId: tifin?._id }, token);
+        setAverage(response);
+        // console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    const fetchRatingStaus = async () => {
+      try {
+        const response = await checkRating({ tifinId: tifin?._id }, token);
+        // console.log(response);
+        setAlreadyRating(response);
+        setUserData(response?.alreadyReviewed);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    
     if (tifin) {
       fetchAerageRating();
       if (token) {
         fetchRatingStaus();
       }
     }
-  }, [tifin,fetchAerageRating, fetchRatingStaus]);
+  }, [tifin,token]);
 
   if (loading) {
     return (
@@ -100,15 +106,7 @@ function SingleTifin() {
     );
   }
 
-  const schemaMarkup = {
-    "@context": "https://schema.org/",
-    "@type": "Product",
-    name: tifin?.name || "Product Title",
-    image: tifin?.images?.map((img) => img.url) || tifin?.images[0]?.url,
-    description: `Tifin Center Near ${tifin?.Location[0]?.name}`,
-    sku: tifin?.slug || "Product SKU",
-    brand: "VR Here",
-  };
+
 
   return (
     <div>
@@ -250,7 +248,7 @@ function SingleTifin() {
 
             <div>
               <div className="p-5 bg-white shadow-md rounded-lg flex items-start space-x-4">
-                <Image
+                <Image   width={500} height={600}
                   src={user?.image}
                   alt={`${user?.name}'s avatar`}
                   className="w-16 h-16 rounded-full object-cover"

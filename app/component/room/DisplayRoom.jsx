@@ -16,7 +16,9 @@ const DisplayRoom = ({ room, onUpdate }) => {
       {/* Header */}
       <div className="flex flex-col md:flex-row items-start md:items-center mb-6">
         <div className="flex-shrink-0">
-          <Image
+          <Image   
+          width={500}
+           height={600}
             src={room?.images?.[0]?.url}
             alt="Room"
             className="w-full md:w-64 h-48 object-cover rounded-lg mb-4 md:mb-0"
@@ -61,7 +63,7 @@ const DisplayRoom = ({ room, onUpdate }) => {
         <h2 className="text-xl font-semibold mb-4">Room Images</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {room?.images?.map((image, index) => (
-            <Image
+            <Image   width={500} height={600}
               key={index}
               src={image?.url}
               alt={`Room image ${index + 1}`}

@@ -113,19 +113,19 @@ const PrivacyPolicy = () => {
           <h2 className="text-2xl font-semibold mb-2">7. Contact Us</h2>
           <p>
             If you have any questions or concerns about our Privacy Policy or
-            the way we handle your information, please don't hesitate to reach
-            out to us. You can contact us via email at{" "}
+            the way we handle your information, please don t hesitate to reach
+            out to us. You can contact us via email at
             <a
               href="mailto:vrhere.in@gmail.com"
               className="text-blue-500"
             >
               vrhere.in@gmail.com
-            </a>{" "}
-            or by phone at{" "}
+            </a>
+            or by phone at
             <a href="tel:+916267144122" className="text-blue-500">
               +91 6267144122
             </a>
-            ,{" "}
+            ,
             <a href="tel:+919009594537" className="text-blue-500">
               +91 9009594537
             </a>
