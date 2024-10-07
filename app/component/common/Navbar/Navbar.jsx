@@ -13,7 +13,7 @@ import LogoutModal from "./LogoutModal";
 import logo from "../../../assests/logo2.png";
 import Link from "next/link";
 
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 function getGreeting() {
@@ -178,7 +178,7 @@ function MobileSidebar({ isOpen, setIsOpen }) {
                     <>
                       <motion.li variants={itemVariants}>
                         <Link
-                          href="/vendor"
+                          href="https://www.vrhere.in/vendor"
                           className="text-white border-b-2 pb-1 tracking-wide mt-2"
                           onClick={() => setIsOpen(false)}
                         >
@@ -221,7 +221,7 @@ const DesktopNavbar = () => {
 
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const router = useRouter()
+  const router = useRouter();
 
   // const navigate = useNavigate();
 
@@ -234,7 +234,7 @@ const DesktopNavbar = () => {
     <div className="bg-black ">
       <div className=" max-w-7xl mx-auto p-5 lg:p-0 hidden lg:flex justify-between items-center text-yellow-600">
         <div className="flex items-center">
-          <Image  width={500}          src={logo} alt="Logo" className="w-40 h-24 " />
+          <Image width={500} src={logo} alt="Logo" className="w-40 h-24 " />
         </div>
         <ul className="flex space-x-8 text-lg">
           {NavbarLinks.map((link, index) => (
@@ -284,7 +284,7 @@ const DesktopNavbar = () => {
             <>
               <li>
                 <Link
-                  href="/vendor"
+                  href="https://www.vrhere.in/vendor"
                   className={`${"hover:text-yellow-600 text-white transition-colors duration-300"}`}
                 >
                   Become Vendor
@@ -318,7 +318,7 @@ function NavbarContainer() {
     <>
       <div className="flex  justify-between items-center p-4 lg:hidden bg-black text-white">
         <div className="text-xl font-bold">
-          <Image  width={500}         src={logo} alt="Logo" className="w-24 h-16" />
+          <Image width={500} src={logo} alt="Logo" className="w-24 h-16" />
         </div>
         <button onClick={() => setIsOpen(!isOpen)}>
           <GiHamburgerMenu className="text-yellow-500" size={32} />

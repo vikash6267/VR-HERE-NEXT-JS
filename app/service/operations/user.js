@@ -301,7 +301,7 @@ export function logout(navigate) {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     toast.success("Logged Out");
-    navigate("/");
+    navigate("https://www.vrhere.in");
   };
 }
 
