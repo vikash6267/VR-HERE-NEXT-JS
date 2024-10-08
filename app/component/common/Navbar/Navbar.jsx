@@ -178,7 +178,7 @@ function MobileSidebar({ isOpen, setIsOpen }) {
                     <>
                       <motion.li variants={itemVariants}>
                         <Link
-                          href="https://www.vrhere.in/vendor"
+                          href="https://admin.vrhere.in/vendor"
                           className="text-white border-b-2 pb-1 tracking-wide mt-2"
                           onClick={() => setIsOpen(false)}
                         >
@@ -284,7 +284,7 @@ const DesktopNavbar = () => {
             <>
               <li>
                 <Link
-                  href="https://www.vrhere.in/vendor"
+                  href="https://admin.vrhere.in/vendor"
                   className={`${"hover:text-yellow-600 text-white transition-colors duration-300"}`}
                 >
                   Become Vendor
