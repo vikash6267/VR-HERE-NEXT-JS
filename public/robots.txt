@@ -3,6 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://findmypgs.vercel.app/
+Host: https://vrhere.in
 
 # Sitemaps
+Sitemap: https://vrhere.in/sitemap.xml
