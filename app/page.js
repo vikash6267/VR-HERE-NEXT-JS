@@ -17,7 +17,7 @@ export function generateMetadata() {
     metadataBase: new URL('http://localhost:3000/'), // Set the metadataBase to your domain
 
     title: "VR Here - Best PG and Tiffin Services Near VIT Bhopal",
-    description: "Discover the best PG accommodations and Tiffin centers close to VIT Bhopal. We offer great deals in Ashta, Kothari, and Sehore.",
+    description: "Discover the best PG accommodations and Tiffin centers close to VIT Bhopal. We offer great deals in Ashta, Kothari, and Sehore. Visit VR Here",
     keywords: "PG rooms near VIT Bhopal, Tiffin services VIT Bhopal, Affordable PG near VIT Bhopal, Student accommodation VIT Bhopal",
     icons: {
       icon: '/favicon.ico',
