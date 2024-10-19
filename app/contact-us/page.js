@@ -41,3 +41,4 @@ export const metadata = {
         icon: "/favicon.ico", // Keep or update as needed
     },
 };
+

@@ -14,7 +14,7 @@ export default page
 
 export function generateMetadata() {
   return {
-    metadataBase: new URL('http://localhost:3000/'), // Set the metadataBase to your domain
+    metadataBase: new URL('https://vrhere.in/'), // Set the metadataBase to your domain
 
     title: "VR Here - Best PG and Tiffin Services Near VIT Bhopal",
     description: "Discover the best PG accommodations and Tiffin centers close to VIT Bhopal. We offer great deals in Ashta, Kothari, and Sehore. Visit VR Here",

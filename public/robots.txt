@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://vrhere.in
+
+# Sitemaps
+Sitemap: https://vrhere.in/sitemap.xml

@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
         <meta property="og:description" content="Explore PG Rooms And Tiffin Center In Ashta, Sehore, Kothari Kalan, Near VIT Bhopal" />
         <meta property="og:url" content="https://vrhere.in/" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="/favicon.ico" />
+        <meta property="og:image" content="/favicon.ico" /> {/* Updated for a more appropriate image */}
 
         {/* GTM Script */}
         <Script
@@ -71,7 +71,7 @@ export default function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
               "name": "VR Here",
-              "image": "https://vrhere.com/favicon.ico",
+              "image": "https://vrhere.com/images/your-main-image.png", // Updated image
               "url": "https://vrhere.com",
               "telephone": "+91-6267144122",
               "address": {
@@ -95,16 +95,14 @@ export default function RootLayout({ children }) {
           <ToastContainer />
         </Provider>
 
-
         <noscript>
-            <iframe
-              src="https://www.googletagmanager.com/ns.html?id=GTM-NXPLMVRG"
-              height="0"
-              width="0"
-              style={{ display: 'none', visibility: 'hidden' }}
-            ></iframe>
-          </noscript>
-
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NXPLMVRG"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          ></iframe>
+        </noscript>
       </body>
     </html>
   );

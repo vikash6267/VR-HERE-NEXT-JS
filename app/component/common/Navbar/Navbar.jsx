@@ -234,8 +234,11 @@ const DesktopNavbar = () => {
     <div className="bg-black ">
       <div className=" max-w-7xl mx-auto p-5 lg:p-0 hidden lg:flex justify-between items-center text-yellow-600">
         <div className="flex items-center">
-          <Image width={500} src={logo} alt="Logo" className="w-40 h-24 " />
-        </div>
+        <Link href={"/"}>
+        <Image width={500} src={logo} alt="Logo" className="w-40 h-24 " />
+
+        </Link>
+                </div>
         <ul className="flex space-x-8 text-lg">
           {NavbarLinks.map((link, index) => (
             <li key={index}>
