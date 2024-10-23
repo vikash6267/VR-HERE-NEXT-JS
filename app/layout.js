@@ -23,25 +23,9 @@ const geistMono = localFont({
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        {/* Title and Meta Tags */}
-        <title>VR Here - Find My PG</title>
+      {/* <Head>
+      
 
-        {/* Favicons and Apple Touch Icon */}
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/manifest.json" />
-
-        {/* Open Graph Meta Tags */}
-        <meta property="og:title" content="VR Here - Find My PG" />
-        <meta property="og:description" content="Explore PG Rooms And Tiffin Center In Ashta, Sehore, Kothari Kalan, Near VIT Bhopal" />
-        <meta property="og:url" content="https://vrhere.in/" />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="/favicon.ico" /> {/* Updated for a more appropriate image */}
-
-        {/* GTM Script */}
         <Script
           id="gtm-script"
           strategy="afterInteractive"
@@ -61,7 +45,6 @@ export default function RootLayout({ children }) {
           }}
         />
 
-        {/* Structured Data for SEO */}
         <Script
           id="structured-data"
           type="application/ld+json"
@@ -71,7 +54,7 @@ export default function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
               "name": "VR Here",
-              "image": "https://vrhere.com/images/your-main-image.png", // Updated image
+              "image": "https://vrhere.com/favicon.ico", // Updated image
               "url": "https://vrhere.com",
               "telephone": "+91-6267144122",
               "address": {
@@ -87,7 +70,7 @@ export default function RootLayout({ children }) {
             }),
           }}
         />
-      </head>
+      </Head> */}
 
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Provider store={store}>

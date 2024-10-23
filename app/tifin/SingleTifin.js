@@ -17,7 +17,7 @@ import SevenDayMeal from "../component/core/SevenDayMeal";
 import Loading from "../component/common/Loading";
 import EnquiryForm from "../component/room/EnquiryForm";
 import Image from "next/image";
-
+import Head from "next/head";
 function SingleTifin() {
   const { token, user } = useSelector((state) => state.auth);
   const { slug } = useParams();
@@ -107,10 +107,29 @@ function SingleTifin() {
   }
 
 
-
+  const roomimage = tifin?.images[0]?.url
+ const roomUrl = `https://www.vrhere.in/tifin/${tifin.slug}`
   return (
-    <div>
-   
+    <>
+     <Head>
+        <title>{tifin?.name}</title>
+        <meta name="description" content={tifin?. tifin?.description || "Discover the best tiffin service near VIT Bhopal University with affordable pricing and delicious food."} />
+        <meta property="og:title" content={tifin?.name} />
+        <meta property="og:description" content={tifin?. tifin?.description || "Discover the best tiffin service near VIT Bhopal University with affordable pricing and delicious food."} />
+        <meta property="og:image" content={roomimage} />
+        <meta property="og:url" content={roomUrl} />
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={tifin?.name} />
+        <meta name="twitter:description"  content={tifin?. tifin?.description || "Discover the best tiffin service near VIT Bhopal University with affordable pricing and delicious food."} />
+        <meta name="twitter:image" content={roomimage} />
+<link rel="icon" href={roomimage} type="image/x-icon" />
+        {/* Optional: Add Facebook and WhatsApp-specific image tags */}
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+      </Head>
+
       <NavbarContainer />
       {loading ? (
         <Loading />
@@ -329,7 +348,7 @@ function SingleTifin() {
           tifinId={tifin?._id}
         />
       )}
-    </div>
+    </>
   );
 }
 

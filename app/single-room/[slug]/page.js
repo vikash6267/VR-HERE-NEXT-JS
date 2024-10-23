@@ -1,5 +1,5 @@
 import React from 'react'
-import Component from '../page'
+import Component from './component'
 import { singleRoom } from '@/app/service/operations/room';
 
 function page({params}) {

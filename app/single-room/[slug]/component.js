@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from "react";
-import NavbarContainer from "../component/common/Navbar/Navbar";
+import NavbarContainer from "../../component/common/Navbar/Navbar";
 import { useParams } from "next/navigation";
 
 
@@ -27,17 +27,18 @@ import {
 } from "react-icons/fa";
 
 import { useSelector } from "react-redux";
-import { checkRating, roomAverageRating } from "../service/operations/user";
-import LoginModal from "../component/common/LoginModal";
-import ReviewDetails from "../component/core/Review Rating/ReviewDetails";
-import Loading from "../component/common/Loading";
+import { checkRating, roomAverageRating } from "../../service/operations/user";
+import LoginModal from "../../component/common/LoginModal";
+import ReviewDetails from "../../component/core/Review Rating/ReviewDetails";
+import Loading from "../../component/common/Loading";
 
-import EnquiryForm from "../component/room/EnquiryForm";
-import RoomSlider from "../component/core/RoomSlider";
-import CourseReviewModal from "../component/core/Review Rating/ReviewRating";
-import PhoneModal from "../component/common/PhoneModal";
-import { singleRoom } from "../service/operations/room";
+import EnquiryForm from "../../component/room/EnquiryForm";
+import RoomSlider from "../../component/core/RoomSlider";
+import CourseReviewModal from "../../component/core/Review Rating/ReviewRating";
+import PhoneModal from "../../component/common/PhoneModal";
+import { singleRoom } from "../../service/operations/room";
 import Image from "next/image";
+import Head from "next/head";
 
 
 
@@ -311,9 +312,28 @@ const SingleRoom = () => {
     }
   };
 
+  const roomimage = room?.images[0]?.url
+ const roomUrl = `https://www.vrhere.in/single-room/${room.slug}`
   return (
-    <div>
- 
+    <>
+     <Head>
+        <title>{room?.pgName}</title>
+        <meta name="description" content={room?.desc} />
+        <meta property="og:title" content={room?.pgName} />
+        <meta property="og:description" content={room?.desc} />
+        <meta property="og:image" content={roomimage} />
+        <meta property="og:url" content={roomUrl} />
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={room?.pgName} />
+        <meta name="twitter:description" content={room?.desc} />
+        <meta name="twitter:image" content={roomimage} />
+<link rel="icon" href={roomimage} type="image/x-icon" />
+        {/* Optional: Add Facebook and WhatsApp-specific image tags */}
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+      </Head>
       <NavbarContainer />
       {loading ? (
         <Loading />
@@ -591,7 +611,7 @@ const SingleRoom = () => {
       {reviewModal && (
         <CourseReviewModal setReviewModal={setReviewModal} roomId={room._id} />
       )}
-    </div>
+    </>
   );
 };
 
