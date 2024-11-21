@@ -1,12 +1,12 @@
 "use client"; // Ensure this is at the top
 
-import { Provider } from 'react-redux'; // Import Redux Provider
-import store from './redux/reducer/store'; // Import the Redux store
-import { ToastContainer } from 'react-toastify'; // Import ToastContainer
-import 'react-toastify/dist/ReactToastify.css'; // Import Toastify CSS
+import { Provider } from "react-redux"; // Import Redux Provider
+import store from "./redux/reducer/store"; // Import the Redux store
+import { ToastContainer } from "react-toastify"; // Import ToastContainer
+import "react-toastify/dist/ReactToastify.css"; // Import Toastify CSS
 import "./globals.css";
-import localFont from 'next/font/local';
-import Script from 'next/script';
+import localFont from "next/font/local";
+import Script from "next/script";
 
 // Font imports
 const geistSans = localFont({
@@ -28,6 +28,7 @@ export default function RootLayout({ children }) {
         <Script
           id="gtm-script"
           strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-TCCZGFG3GB"
           dangerouslySetInnerHTML={{
             __html: `
               (function(w,d,s,l,i){
@@ -43,7 +44,15 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
-        
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+                  window.dataLayer = window.dataLayer || [];
+                   function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', 'G-TCCZGFG3GB');`}
+        </Script>
+
         {/* Structured Data Script (Optional) */}
         <Script
           id="structured-data"
@@ -53,20 +62,21 @@ export default function RootLayout({ children }) {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
-              "name": "VR Here",
-              "image": "https://vrhere.com/favicon.ico",
-              "url": "https://vrhere.com",
-              "telephone": "+91-6267144122",
-              "address": {
+              name: "VR Here",
+              image: "https://vrhere.com/favicon.ico",
+              url: "https://vrhere.com",
+              telephone: "+91-6267144122",
+              address: {
                 "@type": "PostalAddress",
-                "streetAddress": "Address near VIT Bhopal",
-                "addressLocality": "Ashta",
-                "addressRegion": "MP",
-                "postalCode": "466115",
-                "addressCountry": "IN",
+                streetAddress: "Address near VIT Bhopal",
+                addressLocality: "Ashta",
+                addressRegion: "MP",
+                postalCode: "466115",
+                addressCountry: "IN",
               },
-              "description": "Find affordable PGs near VIT Bhopal with top-notch amenities. Locations include Ashta, Sehore, and Kothari Kalan.",
-              "priceRange": "$$",
+              description:
+                "Find affordable PGs near VIT Bhopal with top-notch amenities. Locations include Ashta, Sehore, and Kothari Kalan.",
+              priceRange: "$$",
             }),
           }}
         />
@@ -79,14 +89,6 @@ export default function RootLayout({ children }) {
         </Provider>
 
         {/* GTM NoScript (for users with JS disabled) */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-NXPLMVRG"
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-          ></iframe>
-        </noscript>
       </body>
     </html>
   );
