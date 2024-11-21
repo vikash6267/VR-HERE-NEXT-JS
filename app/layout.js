@@ -23,9 +23,8 @@ const geistMono = localFont({
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      {/* <Head>
-      
-
+      <head>
+        {/* Google Tag Manager Script */}
         <Script
           id="gtm-script"
           strategy="afterInteractive"
@@ -44,7 +43,8 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
-
+        
+        {/* Structured Data Script (Optional) */}
         <Script
           id="structured-data"
           type="application/ld+json"
@@ -54,7 +54,7 @@ export default function RootLayout({ children }) {
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
               "name": "VR Here",
-              "image": "https://vrhere.com/favicon.ico", // Updated image
+              "image": "https://vrhere.com/favicon.ico",
               "url": "https://vrhere.com",
               "telephone": "+91-6267144122",
               "address": {
@@ -70,7 +70,7 @@ export default function RootLayout({ children }) {
             }),
           }}
         />
-      </Head> */}
+      </head>
 
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Provider store={store}>
@@ -78,6 +78,7 @@ export default function RootLayout({ children }) {
           <ToastContainer />
         </Provider>
 
+        {/* GTM NoScript (for users with JS disabled) */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-NXPLMVRG"
