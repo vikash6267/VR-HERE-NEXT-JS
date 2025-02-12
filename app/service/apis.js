@@ -1,4 +1,4 @@
-const BASE_URL = "https://apivrhere.mahitechnocrafts.in/api/v1"
+const BASE_URL = "https://api.vrhere.in/api/v1"
 
 // ??USER APIS
 export const userEndpoints = {
